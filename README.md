@@ -25,7 +25,7 @@
 - Completar el checkout con sus nombres apellido y una tarjeta de credito de 16 digitos
 - Verificar los siguientes datos en el ticket de compra (Nombre y apellido, productos, tarjeta de crédito, costo total)
 
-#Informaciön importante
+# Informaciön importante
 
 - Todo deberá ser realizado en un único archivo en una única instancia de test (un único it) 
 - En un archivo fixture deberán colocar el producto que quieren elegir con su precio y su nombre para luego utilizarlo para comprobar nombre y precio en el carrito de compras 
