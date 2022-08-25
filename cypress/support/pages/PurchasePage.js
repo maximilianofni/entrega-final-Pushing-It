@@ -3,6 +3,7 @@ export class PurchasePage {
     constructor() {
     this.closeModal = 'Thank you'
     this.textModal =  "[role='progressbar']"
+    this.buttonLogout = '#logout'
         
     }
 
@@ -29,5 +30,8 @@ export class PurchasePage {
     verificarTotalDePrecios(precioTotal){
         cy.contains(precioTotal).should('contain',precioTotal);
      }
-    
+
+     logout() {
+        cy.get(this.buttonLogout).click()
+    }
 }

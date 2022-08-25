@@ -1,6 +1,4 @@
 /// <reference types="cypress" />
-import { RegisterPage } from "../support/pages/registerPage"
-import { LoginPage } from "../support/pages/loginPage";
 import { HomePage } from "../support/pages/HomePage"
 import { OnlineShopProducts } from "../support/pages/onlineShopProducts";
 import { OnlineShopShoppingCart } from "../support/pages/onlineShopShoppingCart";
@@ -8,7 +6,7 @@ import { CheckoutPage } from "../support/pages/checkoutPage";
 import { PurchasePage } from "../support/pages/PurchasePage";
 
 describe("Desafio 5 Entrega Final", () => { 
-  const user = "maxifni9177";
+  const user = "maxi197791";
   const pass = "Maxi77!";
   const gender = "male";
   const day = "12";
@@ -16,17 +14,14 @@ describe("Desafio 5 Entrega Final", () => {
   const year = "1991";
   const url = "https://pushing-it-backend.herokuapp.com/api"
   let clothes;
-  let loginData;
   let checkoutData;
-  const registerPage = new RegisterPage();
-  const loginPage = new LoginPage();
   const homePage = new HomePage();
   const onlineShopProducts = new OnlineShopProducts();
   const onlineShopShoppingCart = new OnlineShopShoppingCart();
   const checkoutPage = new CheckoutPage();
   const purchasePage = new PurchasePage();
 
-  before("Deberia registrar, ingresar y eliminar el usuario de forma satisfactoria", () =>{
+  before("Deberia registrarse e ingresar sesion por api satisfactoriamente", () =>{
     cy.request({
         url: `${url}/register`,
         method: "POST",
@@ -61,14 +56,12 @@ describe("Desafio 5 Entrega Final", () => {
             expect(res.body.user.month).equal(month)
             expect(res.body.user.year).equal(year)
             expect(res.status).equal(200)
+            window.localStorage.setItem('token',res.body.token)
+            window.localStorage.setItem('user', res.body.user.username)
         })
         
     })
-    
-    cy.fixture("loginData").then(data => {
-      loginData = data
-  })
-  
+
     cy.fixture("clothes").then(data => {
       clothes = data
   })
@@ -79,16 +72,12 @@ describe("Desafio 5 Entrega Final", () => {
 
 });
 
-beforeEach("Deberia ingresar en la url y loguearse e ingresar al modulo ONLINESHOP ", () => {
+beforeEach("Deberia ingresar en la url de PUSHING IT ", () => {
   cy.visit("/");
-  registerPage.clicLogin();
-  loginPage.escribirUsuario(loginData.username);
-  loginPage.escribirPassword(loginData.password);
-  loginPage.clickLoginBoton();
-  homePage.clickoOnlineShopLink();
 });
 
 it("Deberia seleccionar 3 prendas luego ir al carrito , mostrar 3 productos e ir checkout", () =>{
+  homePage.clickoOnlineShopLink();
   onlineShopProducts.selectProduct(clothes.prendaUnoName);
   onlineShopProducts.exitAlert();
   onlineShopProducts.selectProduct(clothes.prendaDosName);
@@ -120,15 +109,14 @@ it("Deberia seleccionar 3 prendas luego ir al carrito , mostrar 3 productos e ir
   purchasePage.exitModal();
 })
 
-afterEach(() => {
-  
+afterEach("Deberia eliminarse el usuario de la base de datos",() => {
      cy.request({
          url: `${url}/deleteuser/${user}`,
         method: "DELETE",
    }).then((res) =>{
       expect(res.status).equal(200)
  })
-
+ purchasePage.logout();
      
 })
   
