@@ -1,6 +1,8 @@
 ## entrega-final-Pushing-It
 
-#Requisitos
+### ejecutar el comando "npm install" primero antes correr el testcase , se visualiza que se creara la carpeta "node_modules"
+
+# Requisitos
 
 - Deberan utilizar el mismo proyecto que utilizaron para la pre-entrega o un proyecto creado desde cero.
 - Deberá contar con una baseURL 
@@ -12,7 +14,7 @@
 - El login y el registro debe ser utilizando endpoints (cy.request) 
 - Deberán eliminar el usuario creado una vez finalizado el test
 
-#Test
+# Test
 
 - Crear el usuario e ingresar al sistema mediante requests 
 - Visitar la pagina de pushing IT. 
@@ -32,4 +34,5 @@
        1. fixture para el registro y login (usuario y contraseña.)
        2. fixture para los productos a elegir (nombre y precio). 
        3. fixture para el checkout (nombre, apellido, tarjeta de credito) 
- -En total deberán usar 7 páginas (register, login, Home, products, shoppingCart, checkOut, ticket)
+ - En total deberán usar 5 páginas (Home, products, shoppingCart, checkOut, ticket)
+ - Para poder guardar los datos del login en el sistema deberan utilizar el metodo "window.localStorage.setItem()". En el deberan guardar tanto el "token" como el "user". ambos deben obtenerlos de la peticion al hacer el login
