@@ -1,0 +1,24 @@
+{
+  "name": "entrega-final-Pushing-It",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open --e2e -b chrome --config baseUrl=https://pushing-front.vercel.app/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maximilianofni/entrega-final-Pushing-It.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maximilianofni/entrega-final-Pushing-It/issues"
+  },
+  "homepage": "https://github.com/maximilianofni/entrega-final-Pushing-It#readme",
+  "devDependencies": {
+    "cypress": "^10.3.0",
+    "cypress-xpath": "^2.0.1"
+  }
+}
