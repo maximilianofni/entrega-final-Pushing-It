@@ -1,4 +1,4 @@
-## entrega-final-Pushing-It
+## entrega-final-Pushing-It-CYPRESS
 
 ### ejecutar el comando "npm install" primero antes correr el testcase , se visualiza que se creara la carpeta "node_modules"
 
